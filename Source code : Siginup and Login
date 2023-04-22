@@ -1,0 +1,324 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+int main()
+{
+    int n = 1, a = 0, ipass, lpass, rcheck, repass = 0, reuser = 0; // ipass=input password, lpass= login password,rcheck=string equal or not,
+    char iname[50], lname[50];                                      // iname= input username, icname= childhood name, lname=login username,bf=bestfriend, ft= fav teacher;
+
+    int sno; // sno= security ques numerber, a= choice of welcome page.
+    char icname[50], ibf[50], ift[50];
+
+    // forget password variable.
+    int m = 0, fsno, fcheck;
+    char fcname[50], fbf[50], fft[50];
+    // Feedback variable
+    int fno = 0, eno = 0, eno2 = 0;
+    cout << "\n\n\n                                                                     ****Welcome to my Webpage****\n\n\n";
+    cout << "1.Sign Up \n2.Login \n3.Help \n4.Feedback ! \n5.Exit ";
+    cout << "\n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+    while (n < 6)
+    {
+        cout << "Enter your choice : ";
+        cin >> a;
+        if (a == 1)
+        {
+            cout << "\nEnter the details for Sign up\n\n";
+            cout << "Enter your Username (in small letters) : ";
+            cin >> iname;
+            cout << "Choose your Password (in numerical) : ";
+            cin >> ipass;
+            cout << "\nSelect One Security Question\n";
+            cout << "\n1. What is your Childhood name.\n2. Who is your BestFriend.\n3. Who is your Favourite Teacher Name.\n";
+            cout << "Enter your choice : ";
+            cin >> sno;
+            switch (sno)
+            {
+            case 1:
+                cout << "Enter your Childhood Name : ";
+                cin >> icname;
+                break;
+            case 2:
+                cout << "Enter your BestFriend Name : ";
+                cin >> ibf;
+                break;
+            case 3:
+                cout << "Enter your Favourite Teacher Name : ";
+                cin >> ift;
+                break;
+            }
+            cout << "\n Select option 2 for Log in\n";
+            cout << "\n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+        }
+        if (a == 2)
+        {
+            cout << "\nEnter the details for Log in\n";
+            cout << "Enter the Username : ";
+            cin >> lname;
+            cout << "Enter the Password (in numerical) : ";
+            cin >> lpass;
+            rcheck = strcmp(iname, lname);
+            if (rcheck == 0)
+            {
+                if (ipass == lpass)
+                {
+                    cout << "Log in Successful !!" << endl;
+                }
+                else
+                {
+                    cout << "INCORRECT PASSWORD" << endl;
+                    while (repass < 3)
+                    {
+                        cout << "Do you want to log in again ??\n\n";
+                        cout << "If YES, Enter : 1\n\nIf NO, Enter : 2\n\nEnter your choice : ";
+                        cin >> repass;
+                        if (repass == 1)
+                        {
+                            cout << "Enter the Username : ";
+                            cin >> lname;
+                            cout << "Enter the Password (in numerical) : ";
+                            cin >> lpass;
+
+                            rcheck = strcmp(iname, lname);
+                            if (rcheck == 0)
+                            {
+                                if (ipass == lpass)
+                                {
+                                    cout << "Log in Successful !!\n";
+                                    break;
+                                }
+                                else
+                                {
+                                    cout << "INCORRECT PASSWORD\n";
+                                }
+                            }
+                            else
+                            {
+                                cout << "INCORRECT USERNAME\n";
+                            }
+                        }
+                        if (repass == 2)
+                        {
+                            cout << "Select option 3 for HELP.";
+                        }
+                        repass++;
+                    }
+                }
+            }
+            else
+            {
+                cout << "INCORRECT USERNAME\n\n";
+                while (reuser < 3)
+                {
+                    cout << "Do you want to log in again ??\n\n";
+                    cout << "If YES, Enter : 1\n\nIf NO, Enter : 2\n\nEnter your choice : ";
+                    cin >> reuser;
+                    if (reuser == 1)
+                    {
+                        cout << "Enter the Username : ";
+                        cin >> lname;
+                        cout << "Enter the Password (in numerical) : ";
+                        cin >> lpass;
+
+                        rcheck = strcmp(iname, lname);
+                        if (rcheck == 0)
+                        {
+                            if (ipass == lpass)
+                            {
+                                cout << "Log in Successful !!\n";
+                                break;
+                            }
+                            else
+                            {
+                                cout << "INCORRECT PASSWORD\n";
+                            }
+                        }
+                        else
+                        {
+                            cout << "INCORRECT USERNAME\n";
+                        }
+                    }
+                    if (reuser == 2)
+                    {
+                        cout << "Select option 3 for HELP.\n";
+                    }
+                    reuser++;
+                }
+            }
+            cout << "\n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+        }
+        if (a == 3)
+        {
+            cout << "\nHow can i help you ?\n";
+            cout << "\nEnter 1 : Forget Password\n";
+            cout << "Enter 2 : Forget Username\n";
+            cout << "Enter your choice : ";
+            cin >> m;
+            if (m == 1)
+            {
+                cout << "\nAnswer to the security question\n";
+                cout << "\nSelect your Security Question\n";
+                cout << "\n1. What is your Childhood name.\n2. Who is your BestFriend.\n3. Who is your Favourite Teacher Name.\n";
+                cout << "Enter your choice : ";
+                cin >> fsno;
+                if (sno == fsno)
+                {
+                    if (fsno == 1)
+                    {
+                        cout << "Enter your Childhood Name : ";
+                        cin >> fcname;
+                        fcheck = strcmp(icname, fcname);
+                        if (fcheck == 0)
+                        {
+                            cout << "Your password : " << ipass;
+                        }
+                        else
+                            cout << "Sorry ! Your answer is Incorrect";
+                    }
+                    if (fsno == 2)
+                    {
+                        cout << "Enter your BestFriend Name : ";
+                        cin >> fbf;
+                        fcheck = strcmp(ibf, fbf);
+                        if (fcheck == 0)
+                        {
+                            cout << "Your password : " << ipass;
+                        }
+                        else
+                            cout << "Sorry ! Your answer is Incorrect";
+                    }
+                    if (fsno == 3)
+                    {
+                        cout << "Enter your Favourite Teacher Name : ";
+                        cin >> ift;
+                        fcheck = strcmp(ift, fft);
+                        if (fcheck == 0)
+                        {
+                            cout << "Your password : " << ipass;
+                        }
+                        else
+                            cout << "Sorry ! Your answer is Incorrect";
+                    }
+                }
+                else
+                    cout << "Sorry ! " << fsno << " is Not your Security Question.";
+            }
+            if (m == 2)
+            {
+                cout << "\nAnswer to the security question\n";
+                cout << "\nSelect your Security Question\n";
+                cout << "\n1. What is your Childhood name.\n2. Who is your BestFriend.\n3. Who is your Favourite Teacher Name.\n";
+                cout << "Enter your choice : ";
+                cin >> fsno;
+                if (sno == fsno)
+                {
+                    if (fsno == 1)
+                    {
+                        cout << "Enter your Childhood Name : ";
+                        cin >> fcname;
+                        fcheck = strcmp(icname, fcname);
+                        if (fcheck == 0)
+                        {
+                            cout << "Your username : " << iname;
+                        }
+                        else
+                            cout << "Sorry ! Your answer is Incorrect";
+                    }
+                    if (fsno == 2)
+                    {
+                        cout << "Enter your BestFriend Name : ";
+                        cin >> fbf;
+                        fcheck = strcmp(ibf, fbf);
+                        if (fcheck == 0)
+                        {
+                            cout << "Your username : " << iname;
+                        }
+                        else
+                            cout << "Sorry ! Your answer is Incorrect";
+                    }
+                    if (fsno == 3)
+                    {
+                        cout << "Enter your Favourite Teacher Name : ";
+                        cin >> ift;
+                        fcheck = strcmp(ift, fft);
+                        if (fcheck == 0)
+                        {
+                            cout << "Your username : %s", iname;
+                        }
+                        else
+                            cout << "Sorry ! Your answer is Incorrect";
+                    }
+                }
+                else
+                    cout << "Sorry ! %d is Not your Security Question.", fsno;
+            }
+            cout << "\nEnter 4 for Feedback\n";
+            cout << "\n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+        }
+        if (a == 4)
+        {
+            cout << "\nThanks for Visiting\n\n";
+            cout << "Would you like to rate our website ?\n";
+            cout << "If yes, Enter - 1\nIf no, Enter - 2\n";
+            cout << "Enter your Choice : ";
+            cin >> fno;
+            if (fno == 1)
+            {
+                cout << "How was your Expirence ?\n";
+                cout << "Enter 1 : for 1 Star rating.\n";
+                cout << "Enter 2 : for 2 Star rating.\n";
+                cout << "Enter 3 : for 3 Star rating.\n";
+                cout << "Enter 4 : for 4 Star rating.\n";
+                cout << "Enter 5 : for 5 Star rating.\n";
+                cout << "\nEnter your choice : ";
+                cin >> eno;
+                if (eno == 5)
+                {
+                    cout << "Excellent\n";
+                }
+                else if (eno == 4)
+                {
+                    cout << "Very Good\n";
+                }
+                else if (eno == 3)
+                {
+                    cout << "Good\n";
+                }
+                else if (eno == 2)
+                {
+                    cout << "Poor\n";
+                }
+                else if (eno == 1)
+                {
+                    cout << "very Poor\n";
+                }
+                else
+                    cout << "Invalid input\n";
+            }
+            else if (fno == 2)
+            {
+                cout << "Enter 1 : Ask me later.\n";
+                cout << "Enter 2 : Never ask me again.\n";
+                cout << "Enter your choice : ";
+                cin >> eno2;
+                if (eno2 == 1)
+                {
+                    cout << "We will be waiting for your feedback.";
+                }
+                else if (eno2 == 2)
+                {
+                    cout << "Okay !!";
+                }
+                else
+                    cout << "Invalid Input";
+            }
+            cout << "\n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+        }
+        if(a==5){
+        exit;
+        }
+        a++;
+    }
+    return 0;
+}
